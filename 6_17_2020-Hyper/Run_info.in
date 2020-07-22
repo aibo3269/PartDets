@@ -1,0 +1,75 @@
+###################################
+                Run
+####################################
+
+CalculatePUSystematics true
+
+/// DataHistos data_pileup_2016_69p2.root  
+/// MCHistos mc_pileup_Summer16.root
+
+DataHistos PileUpReweighting2016.root 
+MCHistos mc2016_pileup_Dec2018reReco.root
+DataPUHistName pileup
+MCPUHistName pileup
+
+SpecialMCPUCalculation false
+SpecialMCPUHistos new_mc2017_pileupReweighting_NanoAODv6.root
+/// SpecialMCPUHistos new_mc2017_pileupReweighting_NanoAODv6_wanddylo_incl.root
+/// SpecialMCPUHistos new_mc2017_pileupReweighting_NanoAODv6_dynlo_incl.root
+
+ApplyTauIDSF false
+UsePileUpWeight true
+ApplyZBoostSF true
+
+isData false
+ApplyGenWeight  true
+
+/// ------ Data-specific cuts ------///
+FilterDataByGoldenJSON true
+ApplyHEMVeto2018 false
+
+/// ------ MC Gen-level cuts ------///
+/// --- HT filter --- ///
+DiscrByGenHT false
+LowerGenHtCut 0.0
+UpperGenHtCut 70.0
+
+/// --- dilepton mass filter --- ///
+DiscrByGenDileptonMass false
+GenDilepMassRange 80.0 100.0
+
+/// ------ Triggers ----- ///
+
+//Trigger1FirstRequirement HLT_IsoMu24
+//Trigger1SecondRequirement HLT_IsoMu24
+
+Trigger1FirstRequirement HLT_DoubleMediumIsoPFTau35_Trk1_eta2p1_Reg
+Trigger1SecondRequirement HLT_DoubleMediumIsoPFTau35_Trk1_eta2p1_Reg
+
+Trigger2FirstRequirement HLT_DoubleMediumIsoPFTau35_Trk1_eta2p1_Reg
+Trigger2SecondRequirement HLT_DoubleMediumIsoPFTau35_Trk1_eta2p1_Reg
+
+UseTriggerWildcard false
+
+///---Treat Muon as Neutrino---///
+
+TreatMuonsAsNeutrinos 0
+TreatMuonsAsTaus 0
+
+///-----MET cuts------///
+ApplyMetFilters true
+MT2Mass 0.
+DiscrByMet false
+MetCut 0.0 30.0
+
+DiscrByMHT false
+MhtCut 50.0
+DiscrByHT false
+HtCut 30.0
+
+JetPtForMhtAndHt 30.0        
+JetEtaForMhtAndHt 5.0        
+ApplyJetLooseIDforMhtAndHt true
+
+/// --- MC selection --- ///
+InitializeMCSelection false
